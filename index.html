@@ -191,10 +191,11 @@
       color: #fff; font-size: 10px; font-weight: 700; letter-spacing: 2px;
       text-transform: uppercase; padding: 4px 14px; border-radius: 999px; white-space: nowrap;
     }
+    .pc-header { display: flex; flex-direction: column; gap: 6px; }
     .pc-name { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--text2); }
     .pc-price { font-family: 'Playfair Display', serif; font-size: 44px; line-height: 1; letter-spacing: -1px; }
     .pc-price span { font-family: 'Inter', sans-serif; font-size: 15px; font-weight: 500; opacity: 0.6; }
-    .pc-desc { font-size: 13px; color: var(--text2); line-height: 1.6; }
+    .pc-desc { font-size: 13px; color: var(--text2); line-height: 1.6; margin-top: 12px; }
     .pc-features { display: flex; flex-direction: column; gap: 10px; }
     .pc-feature { font-size: 13px; color: var(--text2); display: flex; gap: 9px; align-items: flex-start; }
     .pc-feature::before { content: '✦'; color: var(--accent); font-size: 9px; margin-top: 4px; flex-shrink: 0; }
@@ -620,7 +621,7 @@
 
         <!-- Free -->
         <div class="pricing-card">
-          <div>
+          <div class="pc-header">
             <div class="pc-name">Free</div>
             <div class="pc-price">€0 <span>/ forever</span></div>
             <div class="pc-desc">Try the magic. No credit card needed.</div>
@@ -637,7 +638,7 @@
 
         <!-- Monthly -->
         <div class="pricing-card">
-          <div>
+          <div class="pc-header">
             <div class="pc-name">Monthly</div>
             <div class="pc-price">€7.99 <span>/ month</span></div>
             <div class="pc-desc">Full access, billed monthly. Cancel anytime.</div>
@@ -657,7 +658,7 @@
         <!-- Annual -->
         <div class="pricing-card featured">
           <div class="pc-badge">Best value — save 48%</div>
-          <div>
+          <div class="pc-header">
             <div class="pc-name">Annual</div>
             <div class="pc-price">€49.99 <span>/ year</span></div>
             <div class="pc-desc">Everything in monthly, billed once a year.</div>
@@ -756,6 +757,19 @@
       window.addEventListener('scroll', function() {
         if (!ticking) { requestAnimationFrame(update); ticking = true; }
       }, { passive: true });
+    })();
+
+    // Equalise pricing card header heights so feature lists start at the same Y
+    (function() {
+      function equaliseHeaders() {
+        var headers = document.querySelectorAll('.pc-header');
+        headers.forEach(function(h) { h.style.minHeight = ''; });
+        var max = 0;
+        headers.forEach(function(h) { if (h.offsetHeight > max) max = h.offsetHeight; });
+        headers.forEach(function(h) { h.style.minHeight = max + 'px'; });
+      }
+      window.addEventListener('load', equaliseHeaders);
+      window.addEventListener('resize', equaliseHeaders);
     })();
   </script>
 

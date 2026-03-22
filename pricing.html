@@ -142,7 +142,7 @@
       white-space: nowrap;
     }
 
-    .plan-header { display: flex; flex-direction: column; gap: 8px; min-height: 150px; }
+    .plan-header { display: flex; flex-direction: column; gap: 8px; }
     .plan-name { font-size: 13px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--text2); }
     .plan-price { font-family: 'Playfair Display', serif; font-size: 52px; line-height: 1; letter-spacing: -1px; }
     .plan-price span { font-family: 'Inter', sans-serif; font-size: 18px; font-weight: 500; opacity: 0.6; }
@@ -484,6 +484,19 @@
       window.addEventListener('scroll', function() {
         if (!ticking) { requestAnimationFrame(update); ticking = true; }
       }, { passive: true });
+    })();
+
+    // Equalise plan header heights so feature lists start at the same Y
+    (function() {
+      function equaliseHeaders() {
+        var headers = document.querySelectorAll('.plan-header');
+        headers.forEach(function(h) { h.style.minHeight = ''; });
+        var max = 0;
+        headers.forEach(function(h) { if (h.offsetHeight > max) max = h.offsetHeight; });
+        headers.forEach(function(h) { h.style.minHeight = max + 'px'; });
+      }
+      window.addEventListener('load', equaliseHeaders);
+      window.addEventListener('resize', equaliseHeaders);
     })();
   </script>
 
