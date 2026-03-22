@@ -43,10 +43,10 @@
       overflow-x: hidden;
       background-color: var(--bg);
       background-image:
-        radial-gradient(ellipse at 14% 12%, rgba(245,169,127,0.46) 0%, transparent 42%),
-        radial-gradient(ellipse at 84% 8%,  rgba(155,114,207,0.32) 0%, transparent 38%),
-        radial-gradient(ellipse at 72% 88%, rgba(79,184,176,0.28)  0%, transparent 42%),
-        radial-gradient(ellipse at 4%  76%, rgba(232,118,90,0.18)  0%, transparent 36%);
+        radial-gradient(ellipse at 14% 12%, rgba(245,169,127,0.65) 0%, transparent 52%),
+        radial-gradient(ellipse at 84% 8%,  rgba(155,114,207,0.50) 0%, transparent 48%),
+        radial-gradient(ellipse at 72% 88%, rgba(79,184,176,0.42)  0%, transparent 52%),
+        radial-gradient(ellipse at 4%  76%, rgba(232,118,90,0.30)  0%, transparent 46%);
       background-attachment: fixed;
     }
 
@@ -56,13 +56,14 @@
       position: fixed; inset: 0; z-index: -1; pointer-events: none;
       background: linear-gradient(
         135deg,
-        rgba(245,169,127,0.18) 0%,
-        rgba(196,184,232,0.22) 35%,
-        rgba(245,169,127,0.12) 65%,
-        rgba(155,114,207,0.18) 100%
+        rgba(245,169,127,0.32) 0%,
+        rgba(196,184,232,0.40) 35%,
+        rgba(245,169,127,0.22) 65%,
+        rgba(155,114,207,0.34) 100%
       );
       background-size: 300% 300%;
-      animation: gradientShift 12s ease infinite;
+      animation: gradientShift 10s ease infinite;
+      transform: translateY(calc(var(--scroll, 0) * -60px));
     }
 
     /* ── NAV ── */
@@ -116,10 +117,11 @@
     .store-badge {
       display: inline-block; text-decoration: none;
       transition: opacity .2s, transform .15s;
-      height: 48px;
     }
     .store-badge:hover { opacity: .86; transform: translateY(-1px); }
-    .store-badge img { height: 48px; width: auto; display: block; }
+    .store-badge img { display: block; width: auto; }
+    .store-badge.apple img { height: 44px; }
+    .store-badge.google img { height: 66px; }
 
     /* ── EMOTIONAL SECTION ── */
     .emotional-section {
@@ -261,7 +263,12 @@
       position: relative; aspect-ratio: 1; overflow: hidden; background: #f0e8dc;
       cursor: pointer;
     }
-    .style-drawing, .style-video {
+    .style-drawing {
+      position: absolute; inset: 0; width: 100%; height: 100%;
+      object-fit: cover; transition: opacity .5s ease;
+      mix-blend-mode: multiply;
+    }
+    .style-video {
       position: absolute; inset: 0; width: 100%; height: 100%;
       object-fit: cover; transition: opacity .5s ease;
     }
@@ -348,13 +355,13 @@
     <div class="hero-buttons">
 
       <!-- Apple App Store badge (official) -->
-      <a href="[APP_STORE_URL]" class="store-badge" aria-label="Download on the App Store">
+      <a href="[APP_STORE_URL]" class="store-badge apple" aria-label="Download on the App Store">
         <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="Download on the App Store" />
       </a>
 
       <!-- Google Play badge (official) -->
-      <a href="[PLAY_STORE_URL]" class="store-badge" aria-label="Get it on Google Play">
-        <img src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png" alt="Get it on Google Play" style="height:48px;margin-top:-6px;" />
+      <a href="[PLAY_STORE_URL]" class="store-badge google" aria-label="Get it on Google Play">
+        <img src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png" alt="Get it on Google Play" />
       </a>
 
     </div>
@@ -640,6 +647,7 @@
             <div class="pc-feature">All 4 art styles</div>
             <div class="pc-feature">Unlimited child profiles</div>
             <div class="pc-feature">Partner sharing mode</div>
+            <div class="pc-feature">Save &amp; share to camera roll</div>
             <div class="pc-feature">No watermark</div>
           </div>
           <a href="pricing.html" class="pc-cta pc-cta-secondary">Get started</a>
@@ -659,6 +667,7 @@
             <div class="pc-feature">All 4 art styles</div>
             <div class="pc-feature">Unlimited child profiles</div>
             <div class="pc-feature">Partner sharing mode</div>
+            <div class="pc-feature">Save &amp; share to camera roll</div>
             <div class="pc-feature">No watermark</div>
           </div>
           <a href="pricing.html" class="pc-cta pc-cta-primary">Get started</a>
@@ -673,13 +682,13 @@
   <section class="cta-section" id="download">
     <div class="cta-glow"></div>
     <h2>Start for free today</h2>
-    <p>Your first animation is on us. No subscription needed, no hidden costs.</p>
+    <p>Your first 3 animations are on us. No subscription needed, no hidden costs.</p>
     <div class="store-buttons">
-      <a href="[APP_STORE_URL]" class="store-badge" aria-label="Download on the App Store">
+      <a href="[APP_STORE_URL]" class="store-badge apple" aria-label="Download on the App Store">
         <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="Download on the App Store" />
       </a>
-      <a href="[PLAY_STORE_URL]" class="store-badge" aria-label="Get it on Google Play">
-        <img src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png" alt="Get it on Google Play" style="height:48px;margin-top:-6px;" />
+      <a href="[PLAY_STORE_URL]" class="store-badge google" aria-label="Get it on Google Play">
+        <img src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png" alt="Get it on Google Play" />
       </a>
     </div>
   </section>
@@ -711,7 +720,7 @@
       <div class="footer-links">
         <h4>Contact</h4>
         <ul>
-          <li><a href="mailto:[YOUR_EMAIL]">[YOUR_EMAIL]</a></li>
+          <li><a href="mailto:hello@getlumi.today">hello@getlumi.today</a></li>
         </ul>
       </div>
     </div>
@@ -734,6 +743,20 @@
         else { video.pause(); card.classList.remove('touched'); }
       }, { passive: true });
     });
+  </script>
+  <script>
+    // Scroll-driven gradient parallax
+    (function() {
+      var ticking = false;
+      function update() {
+        var progress = Math.min(window.scrollY / Math.max(document.documentElement.scrollHeight - window.innerHeight, 1), 1);
+        document.documentElement.style.setProperty('--scroll', progress.toFixed(3));
+        ticking = false;
+      }
+      window.addEventListener('scroll', function() {
+        if (!ticking) { requestAnimationFrame(update); ticking = true; }
+      }, { passive: true });
+    })();
   </script>
 
 </body>

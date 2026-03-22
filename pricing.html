@@ -56,6 +56,7 @@
       );
       background-size: 300% 300%;
       animation: gradientShift 12s ease infinite;
+      transform: translateY(calc(var(--scroll, 0) * -60px));
     }
 
     /* ── NAV ── */
@@ -141,11 +142,11 @@
       white-space: nowrap;
     }
 
-    .plan-header { display: flex; flex-direction: column; gap: 8px; }
+    .plan-header { display: flex; flex-direction: column; gap: 8px; min-height: 150px; }
     .plan-name { font-size: 13px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--text2); }
     .plan-price { font-family: 'Playfair Display', serif; font-size: 52px; line-height: 1; letter-spacing: -1px; }
     .plan-price span { font-family: 'Inter', sans-serif; font-size: 18px; font-weight: 500; opacity: 0.6; }
-    .plan-desc { font-size: 14px; color: var(--text2); line-height: 1.6; }
+    .plan-desc { font-size: 14px; color: var(--text2); line-height: 1.6; margin-top: 10px; }
 
     .features { display: flex; flex-direction: column; gap: 12px; }
     .feature {
@@ -470,6 +471,20 @@
         if (!isOpen) item.classList.add('open');
       });
     });
+  </script>
+  <script>
+    // Scroll-driven gradient parallax
+    (function() {
+      var ticking = false;
+      function update() {
+        var progress = Math.min(window.scrollY / Math.max(document.documentElement.scrollHeight - window.innerHeight, 1), 1);
+        document.documentElement.style.setProperty('--scroll', progress.toFixed(3));
+        ticking = false;
+      }
+      window.addEventListener('scroll', function() {
+        if (!ticking) { requestAnimationFrame(update); ticking = true; }
+      }, { passive: true });
+    })();
   </script>
 
 </body>

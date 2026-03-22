@@ -60,12 +60,31 @@
     footer a { color: var(--text2); text-decoration: none; margin: 0 12px; }
     footer a:hover { color: var(--dark); }
     @media (max-width: 600px) { nav { padding: 16px 20px; } main { padding: 60px 20px 80px; } footer { padding: 24px 20px; } }
+    @keyframes gradientShift {
+      0%   { background-position: 0% 50%; }
+      50%  { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    body::before {
+      content: '';
+      position: fixed; inset: 0; z-index: -1; pointer-events: none;
+      background: linear-gradient(
+        135deg,
+        rgba(245,169,127,0.22) 0%,
+        rgba(196,184,232,0.28) 35%,
+        rgba(245,169,127,0.14) 65%,
+        rgba(155,114,207,0.22) 100%
+      );
+      background-size: 300% 300%;
+      animation: gradientShift 12s ease infinite;
+      transform: translateY(calc(var(--scroll, 0) * -60px));
+    }
   </style>
 </head>
 <body>
 
   <nav>
-    <a href="index.html" class="nav-logo">Lumi</a>
+    <a href="index.html" class="nav-logo">Lumi ✦</a>
     <a href="index.html">Back to home</a>
   </nav>
 
@@ -208,6 +227,11 @@
         <td>AI-based video animation</td>
         <td>USA · EU Standard Contractual Clauses (SCCs)</td>
       </tr>
+      <tr>
+        <td>WAN 2.1</td>
+        <td>AI-based video animation</td>
+        <td>USA · EU Standard Contractual Clauses (SCCs)</td>
+      </tr>
     </table>
 
     <p>
@@ -265,6 +289,21 @@
     </p>
     <p style="margin-top: 12px;">© 2026 Lumi</p>
   </footer>
+
+  <script>
+    // Scroll-driven gradient parallax
+    (function() {
+      var ticking = false;
+      function update() {
+        var progress = Math.min(window.scrollY / Math.max(document.documentElement.scrollHeight - window.innerHeight, 1), 1);
+        document.documentElement.style.setProperty('--scroll', progress.toFixed(3));
+        ticking = false;
+      }
+      window.addEventListener('scroll', function() {
+        if (!ticking) { requestAnimationFrame(update); ticking = true; }
+      }, { passive: true });
+    })();
+  </script>
 
 </body>
 </html>
