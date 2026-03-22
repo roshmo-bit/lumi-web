@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Terms of Use – Lumi</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg:     #fdf6ec;
+      --bg2:    rgba(255,255,255,0.78);
+      --accent: #e8765a;
+      --dark:   #1a1230;
+      --text2:  rgba(26,18,48,0.62);
+      --text3:  rgba(26,18,48,0.36);
+      --border: rgba(26,18,48,0.09);
+    }
+    body {
+      font-family: 'Inter', sans-serif;
+      color: var(--dark); line-height: 1.7;
+      background-color: var(--bg);
+      background-image:
+        radial-gradient(ellipse at 14% 12%, rgba(245,169,127,0.38) 0%, transparent 42%),
+        radial-gradient(ellipse at 84% 8%,  rgba(155,114,207,0.24) 0%, transparent 38%),
+        radial-gradient(ellipse at 72% 88%, rgba(79,184,176,0.20)  0%, transparent 42%);
+      background-attachment: fixed;
+      min-height: 100vh;
+    }
+    nav { display: flex; align-items: center; justify-content: space-between; padding: 18px 48px; background: rgba(253,246,236,0.82); backdrop-filter: blur(16px); border-bottom: 1px solid var(--border); }
+    .nav-logo { font-family: 'Playfair Display', serif; font-size: 22px; color: var(--dark); text-decoration: none; }
+    nav a { color: var(--text2); text-decoration: none; font-size: 14px; transition: color .2s; }
+    nav a:hover { color: var(--dark); }
+    main { max-width: 720px; margin: 0 auto; padding: 80px 24px 120px; }
+    .page-label { font-size: 11px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--accent); margin-bottom: 16px; }
+    h1 { font-family: 'Playfair Display', serif; font-size: 42px; margin-bottom: 12px; line-height: 1.2; }
+    .intro { color: var(--text2); margin-bottom: 48px; font-size: 15px; }
+    h2 { font-size: 20px; font-weight: 700; margin: 48px 0 14px; color: var(--dark); padding-bottom: 10px; border-bottom: 1px solid var(--border); }
+    h3 { font-size: 16px; font-weight: 600; margin: 24px 0 8px; color: var(--dark); }
+    p { color: var(--text2); margin-bottom: 14px; font-size: 15px; }
+    ul, ol { color: var(--text2); font-size: 15px; padding-left: 24px; margin-bottom: 14px; }
+    li { margin-bottom: 8px; }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .highlight {
+      background: var(--bg2); backdrop-filter: blur(10px);
+      border: 1px solid rgba(255,255,255,0.72);
+      border-radius: 16px; padding: 24px 28px; margin: 20px 0;
+      box-shadow: 0 4px 24px rgba(90,60,30,0.07);
+    }
+    .highlight p { margin-bottom: 0; }
+    .placeholder { background: rgba(232,118,90,0.12); border: 1px solid rgba(232,118,90,0.30); border-radius: 6px; padding: 2px 8px; color: var(--accent); font-style: normal; }
+    footer { border-top: 1px solid var(--border); padding: 32px 48px; text-align: center; background: rgba(253,246,236,0.6); }
+    footer p { color: var(--text3); font-size: 13px; }
+    footer a { color: var(--text2); text-decoration: none; margin: 0 12px; }
+    footer a:hover { color: var(--dark); }
+    @media (max-width: 600px) { nav { padding: 16px 20px; } main { padding: 60px 20px 80px; } footer { padding: 24px 20px; } }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="index.html" class="nav-logo">Lumi</a>
+    <a href="index.html">Back to home</a>
+  </nav>
+
+  <main>
+    <div class="page-label">Legal</div>
+    <h1>Terms of Use</h1>
+    <p class="intro">
+      These Terms of Use govern your use of the Lumi app and the website getlumi.today
+      (together the "Service"). Please read them carefully before using Lumi.
+    </p>
+
+    <!-- § 1 -->
+    <h2>§ 1 Provider and scope</h2>
+    <p>
+      The provider of the Service is:<br /><br />
+      <em class="placeholder">[YOUR FULL NAME]</em><br />
+      <em class="placeholder">[STREET AND HOUSE NUMBER, POSTCODE CITY]</em><br />
+      Email: <a href="mailto:[YOUR_EMAIL]"><em class="placeholder">[YOUR_EMAIL]</em></a>
+    </p>
+    <p>
+      These Terms apply to all users of the Lumi app (iOS and Android) and the website
+      getlumi.today. By registering an account or using the Service, the user agrees to
+      these Terms.
+    </p>
+    <p>
+      Conflicting terms of the user are not recognised unless the provider explicitly agrees
+      to them in writing.
+    </p>
+
+    <!-- § 2 -->
+    <h2>§ 2 Description of the Service</h2>
+    <p>
+      Lumi is a mobile application that allows users to transform photographs of children's
+      drawings into stylised images and short animated videos using artificial intelligence.
+      Four animation styles are available: Storybook, Pixar, Anime and Photorealistic.
+    </p>
+    <p>The core features include:</p>
+    <ul>
+      <li>Uploading or photographing children's drawings</li>
+      <li>AI-based style transformation using OpenAI GPT-image-1</li>
+      <li>AI-based video animation using Kling AI (via fal.ai)</li>
+      <li>Storage and management of animations in a personal gallery</li>
+      <li>Creation of children's profiles and family sharing</li>
+    </ul>
+    <p>
+      The provider delivers the Service to the best of its ability and reserves the right
+      to further develop, modify or discontinue features where this is reasonable for the user.
+    </p>
+
+    <!-- § 3 -->
+    <h2>§ 3 Registration and user account</h2>
+    <p>
+      Using Lumi requires the creation of a user account with a valid email address. The user
+      is obliged to provide truthful information and to keep it up to date.
+    </p>
+    <p>
+      The user account is personal and non-transferable. The user is responsible for all
+      activities that take place under their account and is obliged to keep their password
+      confidential and to notify the provider immediately if they suspect unauthorised use
+      of their account.
+    </p>
+    <p>
+      The provider reserves the right to suspend or delete user accounts in the event of
+      violations of these Terms or applicable law.
+    </p>
+
+    <!-- § 4 -->
+    <h2>§ 4 Credits and payment</h2>
+    <h3>4.1 Free allowance</h3>
+    <p>
+      Each user receives free credits upon registration for initial animations.
+      The current number of free credits is visible in the app.
+    </p>
+
+    <h3>4.2 Purchasing additional credits</h3>
+    <p>
+      Additional credits can be purchased via in-app purchases in the Apple App Store or
+      Google Play Store. Processing is handled exclusively by the respective platform
+      operators (Apple Inc. / Google LLC) and is subject to their payment terms.
+    </p>
+
+    <h3>4.3 Prices</h3>
+    <p>
+      Current prices are displayed in the app. All prices are final prices inclusive of
+      applicable statutory VAT.
+    </p>
+
+    <h3>4.4 No refund of credits</h3>
+    <p>
+      Credits already consumed are generally non-refundable unless the animation has failed
+      due to a technical error on the provider's side. In that case, credits will be
+      automatically re-credited or refunded on request.
+    </p>
+
+    <div class="highlight">
+      <p>
+        <strong>Right of withdrawal:</strong> For in-app purchases, the right of withdrawal
+        provided by the respective app store (Apple / Google) applies. For digital content
+        that is made available immediately after purchase, the right of withdrawal may lapse
+        if the user has expressly agreed that performance of the contract begins before the
+        withdrawal period expires.
+      </p>
+    </div>
+
+    <!-- § 5 -->
+    <h2>§ 5 Intellectual property and usage rights</h2>
+
+    <h3>5.1 User rights in uploaded content</h3>
+    <p>
+      The user warrants that they are authorised to use the uploaded drawings and images
+      with Lumi and that no third-party rights are infringed.
+    </p>
+    <p>
+      By uploading content, the user grants the provider a non-exclusive, worldwide,
+      royalty-free right to use the content solely for the purpose of providing the Service
+      (processing, storage, output). This right expires when the user deletes the content.
+    </p>
+
+    <h3>5.2 Rights in generated content</h3>
+    <p>
+      Images and videos generated by Lumi are made available to the user for personal,
+      non-commercial use. The provider makes no ownership claim to generated content.
+    </p>
+    <p>
+      For commercial use of generated content, the terms of use of the AI services used
+      (OpenAI, fal.ai) must be observed.
+    </p>
+
+    <h3>5.3 Rights in the Service</h3>
+    <p>
+      The app, its design, the "Lumi" brand and all associated content are the property
+      of the provider or its licensors and are protected by copyright. Use is limited to
+      the intended use of the app.
+    </p>
+
+    <!-- § 6 -->
+    <h2>§ 6 User obligations and prohibited content</h2>
+    <p>The user undertakes not to upload any content that:</p>
+    <ul>
+      <li>violates applicable German or European law,</li>
+      <li>infringes the rights of third parties (in particular copyright, personality rights or trade marks),</li>
+      <li>contains pornographic, glorifying violence or discriminatory material,</li>
+      <li>includes drawings or depictions of identifiable persons without their consent.</li>
+    </ul>
+    <p>
+      The provider reserves the right to remove content that violates these provisions and
+      to suspend the relevant account.
+    </p>
+
+    <!-- § 7 -->
+    <h2>§ 7 Family sharing</h2>
+    <p>
+      The family sharing feature allows users to share animations with other family members
+      within a group. The sharing user is responsible for ensuring that shared content is
+      intended and suitable for all recipients.
+    </p>
+    <p>
+      Invitations to family sharing are sent via a personal invitation code. Users should
+      only share this code with people they trust.
+    </p>
+
+    <!-- § 8 -->
+    <h2>§ 8 Availability and warranty</h2>
+    <p>
+      The provider strives for high availability of the Service but does not guarantee
+      uninterrupted availability. Maintenance work, technical faults or force majeure may
+      lead to temporary disruptions.
+    </p>
+    <p>
+      The quality of generated images and videos depends on third-party AI services.
+      The provider gives no guarantee as to a specific outcome of AI processing.
+    </p>
+
+    <!-- § 9 -->
+    <h2>§ 9 Limitation of liability</h2>
+    <p>
+      The provider is fully liable for damages arising from injury to life, body or health,
+      and for intentional or grossly negligent breaches of duty.
+    </p>
+    <p>
+      For minor negligent breaches of material contractual obligations (cardinal obligations),
+      liability is limited to the foreseeable, typically occurring damage.
+    </p>
+    <p>
+      Otherwise, the provider's liability for minor negligent breaches of duty is excluded.
+      This does not apply to damages arising from a breach of guarantee or claims under the
+      Product Liability Act.
+    </p>
+    <p>
+      The provider is not liable for damages caused by erroneous or unlawful third-party
+      content on pages to which the Service links.
+    </p>
+
+    <!-- § 10 -->
+    <h2>§ 10 Termination and account deletion</h2>
+    <p>
+      The user may delete their account at any time without giving reasons in the app settings.
+      Upon deletion, all associated data and content will be deleted, subject to any statutory
+      retention obligations.
+    </p>
+    <p>
+      Unused credits will expire upon account deletion; no refund will be made where credits
+      were purchased via in-app purchases and the right of withdrawal no longer applies.
+    </p>
+    <p>
+      The provider may terminate the user account without notice in the event of serious
+      violations of these Terms.
+    </p>
+
+    <!-- § 11 -->
+    <h2>§ 11 Amendments to these Terms</h2>
+    <p>
+      The provider reserves the right to amend these Terms with reasonable advance notice
+      (at least 30 days). The user will be informed of changes by email or in-app notification.
+    </p>
+    <p>
+      If the user does not object to the amended Terms within 30 days of receiving the
+      notification of the change, the new Terms shall be deemed accepted. The user will be
+      expressly informed of this deemed acceptance and the right to object in the notification.
+    </p>
+
+    <!-- § 12 -->
+    <h2>§ 12 Governing law and jurisdiction</h2>
+    <p>
+      German law applies, excluding the UN Convention on Contracts for the International
+      Sale of Goods (CISG).
+    </p>
+    <p>
+      For consumers resident in the EU, the mandatory consumer protection provisions of
+      the respective EU member state apply insofar as they are more favourable to the consumer.
+    </p>
+    <p>
+      The place of jurisdiction for disputes with merchants or legal entities under public
+      law is the provider's registered place of business.
+    </p>
+
+    <!-- § 13 -->
+    <h2>§ 13 Severability</h2>
+    <p>
+      Should any individual provision of these Terms be or become invalid or unenforceable,
+      the validity of the remaining Terms shall not be affected. The invalid or unenforceable
+      provision shall be replaced by the valid and enforceable provision whose effect comes
+      closest to the economic objective of the original provision.
+    </p>
+
+    <p style="margin-top: 48px; font-size: 13px; color: var(--text3);">Last updated: March 2026</p>
+  </main>
+
+  <footer>
+    <p>
+      <a href="index.html">Home</a>
+      <a href="impressum.html">Legal Notice</a>
+      <a href="datenschutz.html">Privacy Policy</a>
+      <a href="agb.html">Terms of Use</a>
+    </p>
+    <p style="margin-top: 12px;">© 2026 Lumi</p>
+  </footer>
+
+</body>
+</html>

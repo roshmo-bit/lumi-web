@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lumi – Welcome to Family!</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', sans-serif; color: #1a1230;
+      min-height: 100vh; display: flex; align-items: center; justify-content: center;
+      background-color: #fdf6ec;
+      background-image:
+        radial-gradient(ellipse at 14% 12%, rgba(245,169,127,0.46) 0%, transparent 42%),
+        radial-gradient(ellipse at 84% 8%,  rgba(155,114,207,0.32) 0%, transparent 38%);
+      background-attachment: fixed;
+      padding: 24px;
+    }
+    .card {
+      background: rgba(255,255,255,0.78); border: 1px solid rgba(26,18,48,0.09);
+      border-radius: 28px; padding: 56px 48px; max-width: 480px; width: 100%;
+      text-align: center; box-shadow: 0 8px 40px rgba(90,60,30,0.11);
+    }
+    .icon { font-size: 52px; margin-bottom: 24px; }
+    h1 { font-family: 'Playfair Display', serif; font-size: 36px; margin-bottom: 16px; }
+    p { font-size: 16px; color: rgba(26,18,48,0.62); line-height: 1.7; margin-bottom: 12px; }
+    .steps {
+      background: rgba(26,18,48,0.04); border-radius: 16px;
+      padding: 24px; margin: 28px 0; text-align: left;
+      display: flex; flex-direction: column; gap: 14px;
+    }
+    .step { display: flex; gap: 14px; align-items: flex-start; font-size: 14px; color: rgba(26,18,48,0.7); }
+    .step-num {
+      width: 24px; height: 24px; border-radius: 999px;
+      background: #1a1230; color: #fff;
+      font-size: 11px; font-weight: 700; display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0; margin-top: 1px;
+    }
+    .btn {
+      display: inline-block; padding: 15px 36px; border-radius: 999px;
+      background: linear-gradient(135deg, #d4a064, #e8765a); color: #fff;
+      font-size: 15px; font-weight: 700; text-decoration: none;
+      transition: opacity .2s;
+    }
+    .btn:hover { opacity: 0.9; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="icon">✦</div>
+    <h1>You're all set!</h1>
+    <p>Your Lumi Family subscription is active. Welcome to the magic.</p>
+    <div class="steps">
+      <div class="step"><div class="step-num">1</div><div>Open the Lumi app on your iPhone</div></div>
+      <div class="step"><div class="step-num">2</div><div>Sign in with the same email you used here</div></div>
+      <div class="step"><div class="step-num">3</div><div>Your premium access activates automatically ✦</div></div>
+    </div>
+    <a href="index.html" class="btn">Back to Lumi</a>
+  </div>
+</body>
+</html>
