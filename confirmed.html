@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Email Confirmed – Lumi</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:     #fdf6ec;
+      --accent: #e8765a;
+      --gold:   #d4a064;
+      --purple: #9b72cf;
+      --dark:   #1a1230;
+      --text2:  rgba(26,18,48,0.62);
+      --text3:  rgba(26,18,48,0.36);
+      --border: rgba(26,18,48,0.09);
+      --shadow: 0 8px 40px rgba(90,60,30,0.11);
+    }
+
+    body {
+      background: var(--bg);
+      font-family: 'Inter', sans-serif;
+      color: var(--dark);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+      text-align: center;
+    }
+
+    .card {
+      background: rgba(255,255,255,0.82);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      box-shadow: var(--shadow);
+      padding: 3rem 2.5rem;
+      max-width: 480px;
+      width: 100%;
+    }
+
+    .sparkle {
+      font-size: 3rem;
+      margin-bottom: 1.25rem;
+      display: block;
+    }
+
+    h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--dark);
+      margin-bottom: 0.75rem;
+      line-height: 1.2;
+    }
+
+    .subtitle {
+      font-size: 1rem;
+      color: var(--text2);
+      line-height: 1.6;
+      margin-bottom: 2rem;
+    }
+
+    .instruction {
+      background: rgba(155,114,207,0.08);
+      border: 1px solid rgba(155,114,207,0.18);
+      border-radius: 14px;
+      padding: 1.25rem 1.5rem;
+      font-size: 0.95rem;
+      color: var(--dark);
+      line-height: 1.6;
+      margin-bottom: 2rem;
+    }
+
+    .instruction strong { color: var(--purple); }
+
+    .app-store-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      background: var(--dark);
+      color: #fff;
+      text-decoration: none;
+      border-radius: 14px;
+      padding: 0.85rem 1.75rem;
+      font-size: 0.95rem;
+      font-weight: 600;
+      transition: opacity 0.18s;
+      margin-bottom: 1.5rem;
+    }
+
+    .app-store-btn:hover { opacity: 0.82; }
+
+    .app-store-btn svg { width: 20px; height: 20px; flex-shrink: 0; }
+
+    .back-link {
+      font-size: 0.875rem;
+      color: var(--text3);
+      text-decoration: none;
+    }
+
+    .back-link:hover { color: var(--text2); }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <span class="sparkle">✦</span>
+    <h1>Email confirmed!</h1>
+    <p class="subtitle">Your Lumi account is now active. Open the app on your phone to start creating magic.</p>
+
+    <div class="instruction">
+      <strong>On your phone?</strong> Open the Lumi app and sign in with your email and password.<br><br>
+      <strong>On a computer?</strong> Grab your phone, open Lumi, and sign in from there.
+    </div>
+
+    <a href="https://apps.apple.com/app/lumi/id6744042462" class="app-store-btn">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+      Download on the App Store
+    </a>
+
+    <br>
+    <a href="https://getlumi.today" class="back-link">← Back to getlumi.today</a>
+  </div>
+
+  <script>
+    // On iOS, attempt to open the app directly if installed
+    (function () {
+      var isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent || '');
+      if (isIOS) {
+        window.location.href = 'lumi://auth/callback';
+      }
+    })();
+  </script>
+</body>
+</html>
