@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Delete Account – Lumi</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg:     #fdf6ec;
+      --bg2:    rgba(255,255,255,0.78);
+      --accent: #e8765a;
+      --dark:   #1a1230;
+      --text2:  rgba(26,18,48,0.62);
+      --text3:  rgba(26,18,48,0.36);
+      --border: rgba(26,18,48,0.09);
+    }
+    body {
+      font-family: 'Inter', sans-serif;
+      color: var(--dark); line-height: 1.7;
+      background-color: var(--bg);
+      background-image:
+        radial-gradient(ellipse at 14% 12%, rgba(245,169,127,0.38) 0%, transparent 42%),
+        radial-gradient(ellipse at 84% 8%,  rgba(155,114,207,0.24) 0%, transparent 38%),
+        radial-gradient(ellipse at 72% 88%, rgba(79,184,176,0.20)  0%, transparent 42%);
+      background-attachment: fixed;
+      min-height: 100vh;
+    }
+    nav { display: flex; align-items: center; justify-content: space-between; padding: 18px 48px; background: rgba(253,246,236,0.82); backdrop-filter: blur(16px); border-bottom: 1px solid var(--border); }
+    .nav-logo { font-family: 'Playfair Display', serif; font-size: 22px; color: var(--dark); text-decoration: none; }
+    nav a { color: var(--text2); text-decoration: none; font-size: 14px; transition: color .2s; }
+    nav a:hover { color: var(--dark); }
+    main { max-width: 720px; margin: 0 auto; padding: 80px 24px 120px; }
+    .page-label { font-size: 11px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--accent); margin-bottom: 16px; }
+    h1 { font-family: 'Playfair Display', serif; font-size: 42px; margin-bottom: 12px; line-height: 1.2; }
+    .intro { color: var(--text2); margin-bottom: 48px; font-size: 15px; }
+    h2 { font-size: 20px; font-weight: 700; margin: 48px 0 14px; color: var(--dark); padding-bottom: 10px; border-bottom: 1px solid var(--border); }
+    p { color: var(--text2); margin-bottom: 14px; font-size: 15px; }
+    ol, ul { color: var(--text2); font-size: 15px; padding-left: 24px; margin-bottom: 14px; }
+    li { margin-bottom: 8px; }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .highlight {
+      background: var(--bg2); backdrop-filter: blur(10px);
+      border: 1px solid rgba(255,255,255,0.72);
+      border-radius: 16px; padding: 24px 28px; margin: 20px 0;
+      box-shadow: 0 4px 24px rgba(90,60,30,0.07);
+    }
+    .highlight p { margin-bottom: 0; }
+    table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 14px; }
+    th { text-align: left; padding: 10px 14px; background: var(--bg2); color: var(--text3); font-weight: 600; font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; }
+    td { padding: 12px 14px; border-bottom: 1px solid var(--border); color: var(--text2); vertical-align: top; }
+    td:first-child { color: var(--dark); font-weight: 500; }
+    footer { border-top: 1px solid var(--border); padding: 32px 48px; text-align: center; background: rgba(253,246,236,0.6); }
+    footer p { color: var(--text3); font-size: 13px; }
+    footer a { color: var(--text2); text-decoration: none; margin: 0 12px; }
+    footer a:hover { color: var(--dark); }
+    @media (max-width: 600px) { nav { padding: 16px 20px; } main { padding: 60px 20px 80px; } footer { padding: 24px 20px; } }
+    @keyframes gradientShift {
+      0%   { background-position: 0% 50%; }
+      50%  { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    body::before {
+      content: '';
+      position: fixed; inset: 0; z-index: -1; pointer-events: none;
+      background: linear-gradient(
+        135deg,
+        rgba(245,169,127,0.22) 0%,
+        rgba(196,184,232,0.28) 35%,
+        rgba(245,169,127,0.14) 65%,
+        rgba(155,114,207,0.22) 100%
+      );
+      background-size: 300% 300%;
+      animation: gradientShift 12s ease infinite;
+      transform: translateY(calc(var(--scroll, 0) * -60px));
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="index.html" class="nav-logo">Lumi ✦</a>
+    <a href="index.html">Back to home</a>
+  </nav>
+
+  <main>
+    <div class="page-label">Account</div>
+    <h1>Delete Your Account</h1>
+    <p class="intro">
+      You can delete your Lumi account and all associated data at any time —
+      directly in the app or by contacting us. This page explains how, and what
+      happens to your data when you do.
+    </p>
+
+    <h2>How to delete your account</h2>
+    <p>The easiest way is directly inside the Lumi app:</p>
+    <ol>
+      <li>Open the Lumi app</li>
+      <li>Tap your profile icon to go to <strong>Settings</strong></li>
+      <li>Scroll to the bottom and tap <strong>Delete account</strong></li>
+      <li>Confirm the deletion when prompted</li>
+    </ol>
+    <p>
+      Your account and all associated data will be permanently deleted immediately.
+    </p>
+
+    <div class="highlight">
+      <p>
+        <strong>Can't access the app?</strong> Email us at
+        <a href="mailto:hello@getlumi.today">hello@getlumi.today</a> with the subject
+        "Account deletion request" and we will manually delete your account within 7 days.
+      </p>
+    </div>
+
+    <h2>What gets deleted</h2>
+    <p>When you delete your account, the following data is permanently removed:</p>
+    <ul>
+      <li>Your user account and login credentials</li>
+      <li>All children's profiles associated with your account</li>
+      <li>All uploaded drawings and source images</li>
+      <li>All generated images and animations in your gallery</li>
+      <li>Any partner account links</li>
+      <li>Your remaining credit balance</li>
+    </ul>
+
+    <h2>What is retained</h2>
+    <p>
+      In limited cases, certain data may be retained beyond account deletion where
+      required by law:
+    </p>
+    <table>
+      <thead>
+        <tr>
+          <th>Data type</th>
+          <th>Retention period</th>
+          <th>Reason</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Transaction records</td>
+          <td>10 years</td>
+          <td>Statutory accounting obligation (§ 147 AO)</td>
+        </tr>
+        <tr>
+          <td>Anonymised usage data</td>
+          <td>Up to 12 months</td>
+          <td>Aggregate analytics only — not linked to your identity</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2>Contact</h2>
+    <p>
+      If you have any questions about account deletion or your data, please contact us at
+      <a href="mailto:hello@getlumi.today">hello@getlumi.today</a>.<br />
+      Robin Moser, Lerchenauer Str. 24B, 80809 Munich, Germany.
+    </p>
+
+    <p style="margin-top: 48px; font-size: 13px; color: var(--text3);">Last updated: April 2026</p>
+  </main>
+
+  <footer>
+    <p>
+      <a href="index.html">Home</a>
+      <a href="imprint.html">Legal Notice</a>
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="terms.html">Terms of Use</a>
+    </p>
+    <p style="margin-top: 12px;">© 2026 Lumi</p>
+  </footer>
+
+  <script>
+    (function() {
+      var ticking = false;
+      function update() {
+        var progress = Math.min(window.scrollY / Math.max(document.documentElement.scrollHeight - window.innerHeight, 1), 1);
+        document.documentElement.style.setProperty('--scroll', progress.toFixed(3));
+        ticking = false;
+      }
+      window.addEventListener('scroll', function() {
+        if (!ticking) { requestAnimationFrame(update); ticking = true; }
+      }, { passive: true });
+    })();
+  </script>
+
+</body>
+</html>
