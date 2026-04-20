@@ -175,6 +175,36 @@
 
     .plan-note { font-size: 12px; color: var(--text3); text-align: center; }
 
+    /* ── BILLING TOGGLE ── */
+    .billing-toggle-wrap {
+      display: flex; justify-content: center; margin-bottom: 48px;
+    }
+    .billing-toggle {
+      display: flex; align-items: center; gap: 6px;
+      background: rgba(26,18,48,0.06); border-radius: 999px; padding: 5px;
+    }
+    .toggle-btn {
+      padding: 10px 24px; border-radius: 999px; border: none; cursor: pointer;
+      font-size: 14px; font-weight: 600; background: transparent; color: var(--text2);
+      transition: all .2s; display: flex; align-items: center; gap: 8px; font-family: 'Inter', sans-serif;
+    }
+    .toggle-btn.active { background: var(--dark); color: #fff; }
+    .toggle-save {
+      background: linear-gradient(90deg, #d4a064, #e8765a);
+      color: #fff; font-size: 10px; font-weight: 700; letter-spacing: 0.5px;
+      padding: 2px 9px; border-radius: 999px;
+    }
+    .toggle-btn:not(.active) .toggle-save { opacity: 0.55; }
+    .plan-annual-tag {
+      font-size: 12px; font-weight: 600; color: var(--accent);
+      background: rgba(232,118,90,0.1); border: 1px solid rgba(232,118,90,0.2);
+      border-radius: 8px; padding: 5px 10px; margin-top: 4px;
+    }
+    .plan.featured .plan-annual-tag {
+      color: var(--gold); background: rgba(212,160,100,0.15);
+      border-color: rgba(212,160,100,0.3);
+    }
+
     /* ── FREE TIER ── */
     .free-tier {
       max-width: 520px; margin: 0 auto 80px;
@@ -279,6 +309,14 @@
     <p>Three tiers to fit every family. Start free, upgrade when you're ready.</p>
   </section>
 
+  <!-- BILLING TOGGLE -->
+  <div class="billing-toggle-wrap">
+    <div class="billing-toggle">
+      <button class="toggle-btn" id="btnMonthly" onclick="setBilling('monthly')">Monthly</button>
+      <button class="toggle-btn active" id="btnAnnual" onclick="setBilling('annual')">Annual <span class="toggle-save">save up to 33%</span></button>
+    </div>
+  </div>
+
   <!-- PLANS -->
   <div class="plans">
 
@@ -306,7 +344,8 @@
     <div class="plan">
       <div class="plan-header">
         <div class="plan-name">Lumi Plus</div>
-        <div class="plan-price">€3.99 <span>/ month</span></div>
+        <div class="plan-price" id="plusPrice">€34.99 <span>/ year</span></div>
+        <div class="plan-annual-tag" id="plusAnnualTag">€2.92 / month · <strong>Save 27%</strong></div>
         <div class="plan-desc">More magic, all styles. Perfect for solo parents.</div>
       </div>
       <div class="features">
@@ -317,18 +356,19 @@
         <div class="feature">Save &amp; share to camera roll</div>
         <div class="feature">No watermark</div>
       </div>
-      <button class="plan-cta plan-cta-secondary" onclick="openModal('price_1TLeLFEMuDjMnQbhyr7CyYrg')">
+      <button class="plan-cta plan-cta-secondary" id="plusCta" onclick="openModal(currentBilling==='annual'?'price_1TLeMqEMuDjMnQbhfcgrYsXF':'price_1TLeLFEMuDjMnQbhyr7CyYrg')">
         Get started
       </button>
-      <div class="plan-note">Or €34.99/year — <a href="#" onclick="openModal('price_1TLeMqEMuDjMnQbhfcgrYsXF'); return false;" style="color:var(--accent);text-decoration:none;font-weight:600;">save 27%</a> · Cancel anytime</div>
+      <div class="plan-note" id="plusNote">Cancel anytime</div>
     </div>
 
     <!-- Lumi Family -->
     <div class="plan featured">
-      <div class="badge-best">Best value — save 33%</div>
+      <div class="badge-best" id="familyBadge">Best value — save 33%</div>
       <div class="plan-header">
         <div class="plan-name">Lumi Family</div>
-        <div class="plan-price">€7.99 <span>/ month</span></div>
+        <div class="plan-price" id="familyPrice">€64.99 <span>/ year</span></div>
+        <div class="plan-annual-tag" id="familyAnnualTag">€5.42 / month · <strong>Save 33%</strong></div>
         <div class="plan-desc">Everything in Plus — and bring a partner along.</div>
       </div>
       <div class="features">
@@ -340,10 +380,10 @@
         <div class="feature">Save &amp; share to camera roll</div>
         <div class="feature">No watermark</div>
       </div>
-      <button class="plan-cta plan-cta-primary" onclick="openModal('price_1TLeJCEMuDjMnQbhqaivkYqF')">
+      <button class="plan-cta plan-cta-primary" id="familyCta" onclick="openModal(currentBilling==='annual'?'price_1TLeHoEMuDjMnQbhWKbqPIYi':'price_1TLeJCEMuDjMnQbhqaivkYqF')">
         Get started
       </button>
-      <div class="plan-note" style="color:rgba(245,239,230,0.4)">Or €64.99/year — <a href="#" onclick="openModal('price_1TLeHoEMuDjMnQbhWKbqPIYi'); return false;" style="color:rgba(212,160,100,0.85);text-decoration:none;font-weight:600;">save 33%</a> · Cancel anytime</div>
+      <div class="plan-note" id="familyNote" style="color:rgba(245,239,230,0.4)">Cancel anytime</div>
     </div>
 
   </div>
@@ -361,7 +401,11 @@
     </div>
     <div class="faq-item">
       <div class="faq-q">How do I activate my subscription in the app?</div>
-      <div class="faq-a">Use the same email address when subscribing here and when signing up in the app. Your plan activates automatically within a few seconds of payment.</div>
+      <div class="faq-a">Use the <strong>same email address</strong> you use in the Lumi app when checking out here. There's no separate login on this site — we match your subscription to your Lumi account by email, and your plan activates automatically within a few seconds of payment.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Do I need to create an account on this website?</div>
+      <div class="faq-a">No. The website has no login. Your Lumi account lives in the app — we just need your email here so Stripe can link the payment to it.</div>
     </div>
     <div class="faq-item">
       <div class="faq-q">Can I cancel anytime?</div>
@@ -400,7 +444,7 @@
   <div class="modal-overlay" id="modalOverlay">
     <div class="modal">
       <h3>Almost there ✦</h3>
-      <p>Enter the email you use (or will use) in the Lumi app. Your premium access will activate automatically.</p>
+      <p><strong>Please use the same email address as your Lumi app account.</strong> That's how we match your subscription to your account — no separate login needed. Your premium access will activate automatically within a few seconds of payment.</p>
       <input type="email" id="emailInput" placeholder="your@email.com" autocomplete="email" />
       <div class="modal-error" id="modalError"></div>
       <button class="modal-submit" id="modalSubmit" onclick="submitCheckout()">Continue to payment</button>
@@ -409,13 +453,50 @@
   </div>
 
   <script>
+    let currentBilling = 'annual';
+
+    function setBilling(mode) {
+      currentBilling = mode;
+      var isAnnual = mode === 'annual';
+      document.getElementById('btnMonthly').classList.toggle('active', !isAnnual);
+      document.getElementById('btnAnnual').classList.toggle('active', isAnnual);
+
+      document.getElementById('plusPrice').innerHTML   = isAnnual ? '€34.99 <span>/ year</span>' : '€3.99 <span>/ month</span>';
+      document.getElementById('familyPrice').innerHTML = isAnnual ? '€64.99 <span>/ year</span>' : '€7.99 <span>/ month</span>';
+
+      document.getElementById('plusAnnualTag').style.display   = isAnnual ? 'block' : 'none';
+      document.getElementById('familyAnnualTag').style.display = isAnnual ? 'block' : 'none';
+
+      document.getElementById('familyBadge').textContent = isAnnual ? 'Best value — save 33%' : 'Most popular';
+
+      document.getElementById('plusNote').textContent   = isAnnual ? 'Cancel anytime' : 'Or €34.99/year — save 27%';
+      document.getElementById('familyNote').textContent = isAnnual ? 'Cancel anytime' : 'Or €64.99/year — save 33%';
+    }
+    setBilling('annual');
+  </script>
+
+  <script>
     const BACKEND = 'https://lumi-backend-sshm.onrender.com';
     let selectedPriceId = null;
 
+    // Read ?email= from URL — pre-fill when user arrives from the Lumi app
+    const PREFILL_EMAIL = (function() {
+      try {
+        const p = new URLSearchParams(window.location.search).get('email');
+        return p && p.includes('@') ? p.trim() : '';
+      } catch (e) { return ''; }
+    })();
+
     function openModal(priceId) {
       selectedPriceId = priceId;
+      const input = document.getElementById('emailInput');
+      if (PREFILL_EMAIL && !input.value) input.value = PREFILL_EMAIL;
       document.getElementById('modalOverlay').classList.add('open');
-      document.getElementById('emailInput').focus();
+      if (input.value) {
+        document.getElementById('modalSubmit').focus();
+      } else {
+        input.focus();
+      }
     }
 
     function closeModal() {
