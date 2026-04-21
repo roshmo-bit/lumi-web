@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Support – Lumi</title>
+  <meta name="description" content="Get help with Lumi. Contact our support team or browse common questions." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:     #fdf6ec;
+      --accent: #e8765a;
+      --gold:   #d4a064;
+      --text:   #2c1810;
+      --muted:  #7a5c4a;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+    }
+
+    /* ── NAV ── */
+    nav {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 20px 40px;
+      border-bottom: 1px solid rgba(44,24,16,0.08);
+    }
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 22px; font-weight: 700;
+      color: var(--text); text-decoration: none;
+    }
+    .nav-logo span { color: var(--accent); }
+    .nav-home {
+      font-size: 14px; color: var(--muted);
+      text-decoration: none; font-weight: 500;
+    }
+    .nav-home:hover { color: var(--accent); }
+
+    /* ── HERO ── */
+    .hero {
+      text-align: center;
+      padding: 80px 24px 60px;
+    }
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(36px, 6vw, 56px);
+      font-weight: 700; line-height: 1.15;
+      margin-bottom: 16px;
+    }
+    .hero p {
+      font-size: 18px; color: var(--muted);
+      max-width: 480px; margin: 0 auto 40px;
+      line-height: 1.6;
+    }
+    .contact-btn {
+      display: inline-block;
+      background: linear-gradient(135deg, var(--gold), var(--accent));
+      color: #fff; font-weight: 600; font-size: 16px;
+      padding: 14px 36px; border-radius: 999px;
+      text-decoration: none;
+      box-shadow: 0 4px 20px rgba(232,118,90,0.30);
+      transition: opacity 0.2s;
+    }
+    .contact-btn:hover { opacity: 0.88; }
+
+    /* ── FAQ ── */
+    .faq-section {
+      max-width: 680px; margin: 0 auto;
+      padding: 0 24px 80px;
+    }
+    .faq-section h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 28px; font-weight: 700;
+      margin-bottom: 32px; text-align: center;
+    }
+    .faq-item {
+      border-bottom: 1px solid rgba(44,24,16,0.10);
+      padding: 20px 0;
+    }
+    .faq-item:first-of-type { border-top: 1px solid rgba(44,24,16,0.10); }
+    .faq-q {
+      font-weight: 600; font-size: 16px;
+      cursor: pointer;
+      display: flex; justify-content: space-between; align-items: center;
+      gap: 16px;
+    }
+    .faq-q::after { content: '+'; font-size: 20px; color: var(--accent); flex-shrink: 0; }
+    .faq-item.open .faq-q::after { content: '−'; }
+    .faq-a {
+      display: none; margin-top: 12px;
+      font-size: 15px; color: var(--muted); line-height: 1.65;
+    }
+    .faq-item.open .faq-a { display: block; }
+
+    /* ── FOOTER ── */
+    footer {
+      text-align: center; padding: 32px 24px;
+      font-size: 13px; color: var(--muted);
+      border-top: 1px solid rgba(44,24,16,0.08);
+    }
+    footer a { color: var(--muted); text-decoration: none; }
+    footer a:hover { color: var(--accent); }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="/" class="nav-logo">Lumi <span>✦</span></a>
+    <a href="/" class="nav-home">← Back to home</a>
+  </nav>
+
+  <section class="hero">
+    <h1>How can we help?</h1>
+    <p>Have a question or running into an issue? We're happy to help — just drop us a message.</p>
+    <a href="mailto:hello@getlumi.today" class="contact-btn">Contact Support</a>
+  </section>
+
+  <section class="faq-section">
+    <h2>Common questions</h2>
+
+    <div class="faq-item">
+      <div class="faq-q">How do I get started with Lumi?</div>
+      <div class="faq-a">Download Lumi, create an account, add a child profile, and take a photo of any drawing. Choose a style and watch the magic happen.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">What is a credit?</div>
+      <div class="faq-a">Each animation uses one credit. Credits are added to your account monthly based on your plan. Unused credits carry over.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">How do I cancel my subscription?</div>
+      <div class="faq-a">You can manage or cancel your subscription at any time through your account settings in the app, or by visiting your subscription management page.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">Can I share my subscription with my partner?</div>
+      <div class="faq-a">Yes — Lumi Family includes partner sharing. You can invite your partner from the Settings screen and they'll get access to the shared credit pool and all children's galleries.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">My animation is taking a long time. Is that normal?</div>
+      <div class="faq-a">Animations typically take 30–90 seconds to generate. During busy periods it may take a little longer. You'll be notified when it's ready.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">How do I save or share an animation?</div>
+      <div class="faq-a">Open any creation in the gallery and tap the save or share button. You can save directly to your Photos or share via any app on your device.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">I have a question not listed here.</div>
+      <div class="faq-a">No problem — reach out to us at <a href="mailto:hello@getlumi.today">hello@getlumi.today</a> and we'll get back to you as soon as possible.</div>
+    </div>
+
+  </section>
+
+  <footer>
+    <p>© 2026 Lumi &nbsp;·&nbsp; <a href="/privacy">Privacy Policy</a> &nbsp;·&nbsp; <a href="/terms">Terms of Use</a></p>
+  </footer>
+
+  <script>
+    document.querySelectorAll('.faq-q').forEach(q => {
+      q.addEventListener('click', () => {
+        q.parentElement.classList.toggle('open');
+      });
+    });
+  </script>
+
+</body>
+</html>

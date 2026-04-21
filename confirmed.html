@@ -113,12 +113,19 @@
     <h1>Email confirmed!</h1>
     <p class="subtitle">Your Lumi account is now active. Open the app on your phone to start creating magic.</p>
 
-    <div class="instruction">
-      <strong>On your phone?</strong> Open the Lumi app and sign in with your email and password.<br><br>
-      <strong>On a computer?</strong> Grab your phone, open Lumi, and sign in from there.
+    <!-- Mobile: open app button (shown via JS) -->
+    <a href="#" id="open-app-btn" class="app-store-btn" style="display:none;background:linear-gradient(135deg,#d4a064,#e8765a);">
+      <svg viewBox="0 0 24 24" fill="currentColor" style="width:18px;height:18px;"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+      Open Lumi now
+    </a>
+
+    <div class="instruction" id="instruction-block">
+      <strong>On your phone?</strong> Tap the button above to open Lumi, then sign in.<br><br>
+      <strong>On a computer?</strong> Grab your phone, open the Lumi app, and sign in with your email and password.
     </div>
 
-    <a href="https://apps.apple.com/app/lumi/id6744042462" class="app-store-btn">
+    <!-- Desktop: App Store link -->
+    <a href="https://apps.apple.com/app/lumi/id6744042462" class="app-store-btn" id="appstore-btn">
       <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
       Download on the App Store
     </a>
@@ -128,11 +135,31 @@
   </div>
 
   <script>
-    // On iOS, attempt to open the app directly if installed
     (function () {
-      var isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent || '');
-      if (isIOS) {
-        window.location.href = 'lumi://auth/callback';
+      var ua = navigator.userAgent || '';
+      var isIOS = /iPhone|iPad|iPod/i.test(ua);
+      var isAndroid = /Android/i.test(ua);
+      var isMobile = isIOS || isAndroid;
+
+      if (isMobile) {
+        // Show the "Open Lumi" deep-link button; pass any tokens Supabase appended
+        var btn = document.getElementById('open-app-btn');
+        var deepLink = 'lumi://auth/callback';
+        if (window.location.hash) deepLink += window.location.hash;
+        btn.href = deepLink;
+        btn.style.display = 'inline-flex';
+
+        // Update instruction to show mobile-first message
+        document.getElementById('instruction-block').innerHTML =
+          '<strong>App already installed?</strong> Tap the button above to open it directly.<br><br>' +
+          '<strong>Don\'t have it yet?</strong> Download below and sign in with your email.';
+
+        // Keep App Store button visible on mobile too (for new users)
+      } else {
+        // Desktop: hide "Open Lumi" button, show clean desktop instructions
+        document.getElementById('open-app-btn').style.display = 'none';
+        document.getElementById('instruction-block').innerHTML =
+          'Your email is confirmed. To get started, <strong>open the Lumi app on your iPhone</strong> and sign in with your email and password.';
       }
     })();
   </script>

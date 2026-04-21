@@ -211,6 +211,53 @@
     .pc-cta-secondary:hover { background: rgba(26,18,48,0.05); }
     .pc-note { font-size: 11px; color: var(--text3); text-align: center; }
     .pricing-card.featured .pc-note { color: rgba(245,239,230,0.3); }
+    .billing-toggle {
+      display: flex; align-items: center; justify-content: center; gap: 6px;
+      margin: 0 auto 36px; background: rgba(26,18,48,0.06);
+      border-radius: 999px; padding: 5px; width: fit-content;
+    }
+    .toggle-btn {
+      padding: 9px 22px; border-radius: 999px; border: none; cursor: pointer;
+      font-size: 13px; font-weight: 600; background: transparent; color: var(--text2);
+      transition: all .2s; display: flex; align-items: center; gap: 8px;
+    }
+    .toggle-btn.active { background: var(--dark); color: #fff; }
+    .toggle-save {
+      background: linear-gradient(90deg, #d4a064, #e8765a);
+      color: #fff; font-size: 10px; font-weight: 700; letter-spacing: 0.5px;
+      padding: 2px 8px; border-radius: 999px;
+    }
+    .toggle-btn:not(.active) .toggle-save { opacity: 0.55; }
+    .pc-annual-tag {
+      font-size: 12px; font-weight: 600; color: var(--accent);
+      background: rgba(232,118,90,0.1); border: 1px solid rgba(232,118,90,0.2);
+      border-radius: 8px; padding: 5px 10px; margin-top: 2px;
+    }
+    .pc-annual-tag strong { color: var(--accent); }
+    .featured-annual-tag {
+      color: var(--gold); background: rgba(212,160,100,0.15);
+      border-color: rgba(212,160,100,0.3);
+    }
+    .featured-annual-tag strong { color: var(--gold); }
+
+    /* ── FAQ ── */
+    .faq-section { padding: 80px 24px 100px; }
+    .faq-inner { max-width: 680px; margin: 0 auto; }
+    .faq-item { border-bottom: 1px solid rgba(26,18,48,0.09); }
+    .faq-q {
+      font-weight: 600; font-size: 15px;
+      padding: 20px 0; cursor: pointer;
+      display: flex; justify-content: space-between; align-items: center; gap: 16px;
+      user-select: none;
+    }
+    .faq-q::after { content: '+'; font-size: 20px; font-weight: 300; flex-shrink: 0; transition: transform .2s; }
+    .faq-item.open .faq-q::after { transform: rotate(45deg); }
+    .faq-a {
+      font-size: 14px; color: var(--text2); line-height: 1.7;
+      max-height: 0; overflow: hidden; transition: max-height .35s ease, padding .35s ease;
+      padding-bottom: 0;
+    }
+    .faq-item.open .faq-a { max-height: 220px; padding-bottom: 20px; }
 
     /* ── SECTIONS ── */
     section { padding: 100px 24px; }
@@ -524,17 +571,17 @@
       <div class="features-grid">
 
         <div class="feature">
-          <div class="feature-icon-wrap ic-purple">
-            <!-- users / family -->
+          <div class="feature-icon-wrap ic-teal">
+            <!-- grid -->
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/>
-              <circle cx="9" cy="7" r="4"/>
-              <path d="M23 21v-2a4 4 0 00-3-3.87"/>
-              <path d="M16 3.13a4 4 0 010 7.75"/>
+              <rect x="3"  y="3"  width="7" height="7"/>
+              <rect x="14" y="3"  width="7" height="7"/>
+              <rect x="14" y="14" width="7" height="7"/>
+              <rect x="3"  y="14" width="7" height="7"/>
             </svg>
           </div>
-          <h3>Partner sharing</h3>
-          <p>On Lumi Family, invite a co-parent as your partner. They get full access — see each other's children, animations, and share a credit pool.</p>
+          <h3>Gallery per child</h3>
+          <p>Every drawing and animation for each child in one place — neatly organised and always accessible.</p>
         </div>
 
         <div class="feature">
@@ -549,17 +596,17 @@
         </div>
 
         <div class="feature">
-          <div class="feature-icon-wrap ic-teal">
-            <!-- grid -->
+          <div class="feature-icon-wrap ic-purple">
+            <!-- users / family -->
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-              <rect x="3"  y="3"  width="7" height="7"/>
-              <rect x="14" y="3"  width="7" height="7"/>
-              <rect x="14" y="14" width="7" height="7"/>
-              <rect x="3"  y="14" width="7" height="7"/>
+              <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/>
+              <circle cx="9" cy="7" r="4"/>
+              <path d="M23 21v-2a4 4 0 00-3-3.87"/>
+              <path d="M16 3.13a4 4 0 010 7.75"/>
             </svg>
           </div>
-          <h3>Gallery per child</h3>
-          <p>Every drawing and animation for each child in one place — neatly organised and always accessible.</p>
+          <h3>Partner sharing</h3>
+          <p>On Lumi Family, invite a co-parent as your partner. They get full access — see each other's children, animations, and share a credit pool.</p>
         </div>
 
         <div class="feature">
@@ -616,6 +663,13 @@
       <div class="section-label">Pricing</div>
       <h2 class="section-title">Simple, honest pricing</h2>
       <p class="section-sub">Start free. Upgrade when you're ready. Cancel anytime.</p>
+
+      <!-- Billing toggle -->
+      <div class="billing-toggle" id="billingToggle">
+        <button class="toggle-btn" id="btnMonthly" onclick="setBilling('monthly')">Monthly</button>
+        <button class="toggle-btn active" id="btnAnnual" onclick="setBilling('annual')">Annual <span class="toggle-save">save up to 33%</span></button>
+      </div>
+
       <div class="pricing-plans">
 
         <!-- Free -->
@@ -640,7 +694,8 @@
         <div class="pricing-card">
           <div class="pc-header">
             <div class="pc-name">Lumi Plus</div>
-            <div class="pc-price">€3.99 <span>/ month</span></div>
+            <div class="pc-price" id="plusPrice">€34.99 <span>/ year</span></div>
+            <div class="pc-annual-tag" id="plusAnnualTag">€2.92 / month · <strong>Save 27%</strong></div>
             <div class="pc-desc">More magic, all styles. Perfect for solo parents.</div>
           </div>
           <div class="pc-features">
@@ -651,15 +706,16 @@
             <div class="pc-feature">No watermark</div>
           </div>
           <a href="pricing.html" class="pc-cta pc-cta-secondary">Get started</a>
-          <div class="pc-note">Or €34.99/year · Cancel anytime</div>
+          <div class="pc-note" id="plusNote">Cancel anytime</div>
         </div>
 
         <!-- Lumi Family -->
         <div class="pricing-card featured">
-          <div class="pc-badge">Best value — save 33%</div>
+          <div class="pc-badge" id="familyBadge">Best value — save 33%</div>
           <div class="pc-header">
             <div class="pc-name">Lumi Family</div>
-            <div class="pc-price">€7.99 <span>/ month</span></div>
+            <div class="pc-price" id="familyPrice">€64.99 <span>/ year</span></div>
+            <div class="pc-annual-tag featured-annual-tag" id="familyAnnualTag">€5.42 / month · <strong>Save 33%</strong></div>
             <div class="pc-desc">Everything in Plus, plus partner sharing.</div>
           </div>
           <div class="pc-features">
@@ -671,11 +727,77 @@
             <div class="pc-feature">No watermark</div>
           </div>
           <a href="pricing.html" class="pc-cta pc-cta-primary">Get started</a>
-          <div class="pc-note">Or €64.99/year · Cancel anytime</div>
+          <div class="pc-note" id="familyNote">Cancel anytime</div>
         </div>
 
       </div>
     </div>
+  </section>
+
+  <script>
+    function setBilling(mode) {
+      var isAnnual = mode === 'annual';
+      document.getElementById('btnMonthly').classList.toggle('active', !isAnnual);
+      document.getElementById('btnAnnual').classList.toggle('active', isAnnual);
+
+      document.getElementById('plusPrice').innerHTML  = isAnnual ? '€34.99 <span>/ year</span>' : '€3.99 <span>/ month</span>';
+      document.getElementById('familyPrice').innerHTML = isAnnual ? '€64.99 <span>/ year</span>' : '€7.99 <span>/ month</span>';
+
+      document.getElementById('plusAnnualTag').style.display   = isAnnual ? 'block' : 'none';
+      document.getElementById('familyAnnualTag').style.display = isAnnual ? 'block' : 'none';
+
+      document.getElementById('familyBadge').textContent = isAnnual ? 'Best value — save 33%' : 'Most popular';
+
+      document.getElementById('plusNote').textContent   = isAnnual ? 'Cancel anytime' : 'Or €34.99/year — save 27%';
+      document.getElementById('familyNote').textContent = isAnnual ? 'Cancel anytime' : 'Or €64.99/year — save 33%';
+    }
+    setBilling('annual');
+  </script>
+
+  <!-- FAQ -->
+  <section class="faq-section">
+    <div class="faq-inner">
+      <div class="section-label" style="text-align:center;margin-bottom:14px;">FAQ</div>
+      <h2 class="section-title" style="text-align:center;margin-bottom:48px;">Common questions</h2>
+      <div class="faq-item">
+        <div class="faq-q">What's the difference between Lumi Plus and Lumi Family?</div>
+        <div class="faq-a">Lumi Plus is for solo parents — you get 5 animations per month, all 4 styles, and up to 2 child profiles. Lumi Family adds partner sharing: you can invite a co-parent and they get full Family features too, sharing your credit pool. Family also includes 10 animations per month and unlimited child profiles.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">How does partner sharing work in Lumi Family?</div>
+        <div class="faq-a">Once you're on Lumi Family, you can invite a partner from within the app. They'll get full access to all Family features — all 4 styles, The Vault, unlimited children — and can create animations using your shared credit pool. Both partners see each other's children and animations.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">What happens when I hit my monthly animation limit?</div>
+        <div class="faq-a">You can purchase additional animation credits at any time from within the app. Unused credits carry over into the next month — they never expire (up to a maximum of 20).</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Why subscribe on the website instead of in the app?</div>
+        <div class="faq-a">Subscribing on the website saves you ~15% because we avoid the App Store fee — and we pass that saving directly on to you.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Can I cancel anytime?</div>
+        <div class="faq-a">Yes. Cancel directly in your Stripe billing portal — your subscription remains active until the end of the paid period.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Is my payment secure?</div>
+        <div class="faq-a">All payments are processed by Stripe — the same infrastructure used by Airbnb, Spotify, and millions of other businesses. We never see your card details.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Can I upgrade from Plus to Family later?</div>
+        <div class="faq-a">Yes. You can upgrade at any time from within the app or your Stripe billing portal — Stripe will prorate the remaining days automatically.</div>
+      </div>
+    </div>
+    <script>
+      document.querySelectorAll('.faq-q').forEach(function(q) {
+        q.addEventListener('click', function() {
+          var item = this.closest('.faq-item');
+          var isOpen = item.classList.contains('open');
+          document.querySelectorAll('.faq-item').forEach(function(i) { i.classList.remove('open'); });
+          if (!isOpen) item.classList.add('open');
+        });
+      });
+    </script>
   </section>
 
   <!-- CTA / DOWNLOAD -->
